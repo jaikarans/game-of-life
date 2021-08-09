@@ -126,13 +126,15 @@ function countNeighbors(grid, x, y) {
   let s = 0;
   for (let i = -1; i < 2; i++) {
     for (let j = -1; j < 2; j++) {
-    //   let col = (x + i + cols) % cols;
-    //   let row = (y + j + rows) % rows;
-	let row = (x+i<0 || x+i > grid.length-1) ? 0 : x + i;
-	let col = (y+j<0 || y+j > grid.length-1) ? 0 : y + j;
-	  if (grid[row][col] > 1) s = 0;
-	  else s = grid[row][col]
-      sum += s;
+
+        let row = x + i;
+        let col = y + j;
+
+	    if (row < 0 || row > rows-1 || col < 0 || col > cols - 1 || grid[row][col] > 1 ){
+            s = 0;
+        }
+	    else s = grid[row][col]
+        sum += s;
     }
   }
   if (grid[x][y] > 1) s = 0;
