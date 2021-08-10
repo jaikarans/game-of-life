@@ -1,4 +1,4 @@
-import {rows, cols, ctx, reso, pause} from './src/common.js'
+import {rows, cols, ctx, reso, pause, canvas} from './src/common.js'
 import { countNeighbors, make2d, color } from './src/functions.js'
 
 
@@ -25,6 +25,8 @@ function getCursorPosition(canvas, event) {
 }
 
 
+let mousePressed = false;
+
 // manualy fill or empty grid box
 canvas.addEventListener('mousedown', (e) => {
     let corrdinate = getCursorPosition(canvas, e)
@@ -37,9 +39,30 @@ canvas.addEventListener('mousedown', (e) => {
     else { 
         grid[x][y] = 1;
     }
+	mousePressed = true;
 
-    drawGrid()
+	drawGrid()
 })
+
+canvas.addEventListener('mousemove', (e) => {
+	if (mousePressed) {
+    	let corrdinate = getCursorPosition(canvas, e)
+    	let x = Math.floor(corrdinate[0]/reso);
+    	let y = Math.floor(corrdinate[1]/reso)
+		// if dead make alive
+	    if (grid[x][y] != 1){
+        	grid[x][y] = 1;
+		}
+
+		drawGrid()
+    }
+	
+})
+
+canvas.addEventListener('mouseup', ()=> {
+	mousePressed = false
+})
+
 
 // start the animation
 start.addEventListener('click', () => {
