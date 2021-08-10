@@ -66,6 +66,7 @@ clear.addEventListener('click', () => {
 	grid = make2d(rows, cols, true)
 	drawGrid();
 	clearInterval(anim)
+	startNotClicked = true;
 })
 
 // draw grid while manualy filling the grid box
