@@ -3,6 +3,7 @@ import { countNeighbors, make2d, color } from './src/functions.js'
 
 
 let grid = make2d(rows,cols)
+let updatedGrid = make2d(rows, cols, true)
 let anim
 let startNotClicked = true
 let pauseNotClicked = true
@@ -61,6 +62,12 @@ pause.addEventListener('click', () => {
 	startNotClicked = true;
 })
 
+clear.addEventListener('click', () => {
+	grid = make2d(rows, cols, true)
+	drawGrid();
+	setInterval(anim)
+})
+
 // draw grid while manualy filling the grid box
 function drawGrid() {
     for (let i = 0; i < grid.length; i++){
@@ -74,7 +81,7 @@ function drawGrid() {
 
 function animateGrid (){
 
-	let updatedGrid = make2d(rows, cols, true);
+	updatedGrid = make2d(rows, cols, true);
 	let state = 0;
 
 	for (let i = 0; i < grid.length; i++){
