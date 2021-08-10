@@ -17,13 +17,57 @@ window.addEventListener('load', () => {
 })
 
 // get cursor corrdinate relative to canvas
-function getCursorPosition(canvas, event) {
-    const rect = canvas.getBoundingClientRect()
-    const x = event.clientX - rect.left
-    const y = event.clientY - rect.top
+function getCursorPosition(canvas, event, touch = false) {
+    let rect = canvas.getBoundingClientRect()
+	let x,y
+	if (touch){
+		x = event.touches[0].clientX - rect.left
+    	y = event.touches[0].clientY - rect.top
+	}
+	else{
+		x = event.clientX - rect.left
+    	y = event.clientY - rect.top
+	}
     return [x, y];
 }
 
+let touched = false;
+
+canvas.addEventListener('touchstart', (e) => {
+	touched = true;
+    let corrdinate = getCursorPosition(canvas, e, true)
+    let x = Math.floor(corrdinate[0]/reso);
+    let y = Math.floor(corrdinate[1]/reso)
+	console.log(x)
+	// if dead make alive vice-versa
+    if (grid[x][y] == 1){
+        grid[x][y] = 0;
+    }
+    else { 
+        grid[x][y] = 1;
+    }
+	drawGrid()	
+})
+
+canvas.addEventListener('touchmove', (e) => {
+	if (touched) {
+    	let corrdinate = getCursorPosition(canvas, e, true)
+    	let x = Math.floor(corrdinate[0]/reso);
+    	let y = Math.floor(corrdinate[1]/reso)
+		// if dead make alive
+	    if (grid[x][y] != 1){
+        	grid[x][y] = 1;
+		}
+
+		drawGrid()
+    }	
+})
+
+canvas.addEventListener('touchend', (e)=> {
+	//prevent mousedown to fire in mobile
+	e.preventDefault()
+	touched = false
+})
 
 let mousePressed = false;
 
@@ -33,11 +77,11 @@ canvas.addEventListener('mousedown', (e) => {
     let x = Math.floor(corrdinate[0]/reso);
     let y = Math.floor(corrdinate[1]/reso)
 	// if dead make alive vice-versa
-    if (grid[x][y] == 1){
+	if (grid[x][y] == 1){
         grid[x][y] = 0;
     }
     else { 
-        grid[x][y] = 1;
+    	grid[x][y] = 1;
     }
 	mousePressed = true;
 
