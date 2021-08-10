@@ -43,7 +43,7 @@ canvas.addEventListener('mousedown', (e) => {
 // start the animation
 start.addEventListener('click', () => {
 	if (startNotClicked){
-    	anim = setInterval( () => requestAnimationFrame(animateGrid), 500)
+    	anim = setInterval( () => requestAnimationFrame(animateGrid), 1000)
 		startNotClicked = false
 	}
 	pauseNotClicked = true
