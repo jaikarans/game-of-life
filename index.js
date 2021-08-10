@@ -65,7 +65,7 @@ pause.addEventListener('click', () => {
 clear.addEventListener('click', () => {
 	grid = make2d(rows, cols, true)
 	drawGrid();
-	setInterval(anim)
+	clearInterval(anim)
 })
 
 // draw grid while manualy filling the grid box
