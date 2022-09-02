@@ -1,5 +1,5 @@
 import {rows, cols, ctx, reso, pause, canvas} from './src/common.js'
-import { countNeighbors, make2d, color } from './src/functions.js'
+import { countNeighbors, make2d, color, makeUnnecessaryDivInvisible } from './src/functions.js'
 
 
 let grid = make2d(rows,cols)
@@ -7,6 +7,18 @@ let updatedGrid = make2d(rows, cols, true)
 let anim
 let startNotClicked = true
 let pauseNotClicked = true
+
+ctx.strokeStyle = '#989898';
+
+const color0 = document.getElementById('color-0');
+const color1 = document.getElementById('color-1');
+const color3 = document.getElementById('color-3');
+const color4 = document.getElementById('color-4');
+const color5 = document.getElementById('color-5');
+const color6 = document.getElementById('color-6');
+const color7 = document.getElementById('color-7');
+const color8 = document.getElementById('color-8');
+
 
 window.addEventListener('load', () => {
 	//grid = new Array()
@@ -38,7 +50,7 @@ canvas.addEventListener('touchstart', (e) => {
     let corrdinate = getCursorPosition(canvas, e, true)
     let x = Math.floor(corrdinate[0]/reso);
     let y = Math.floor(corrdinate[1]/reso)
-	console.log(x)
+	// console.log(x)
 	// if dead make alive vice-versa
     if (grid[x][y] == 1){
         grid[x][y] = 0;
@@ -181,3 +193,52 @@ function animateGrid (){
 	grid = updatedGrid;
 }
 
+
+document.getElementById('color-green').addEventListener('click', () =>{
+	color1.innerHTML = '#103d10';
+	color3.innerHTML = '#2fb62f';
+	color4.innerHTML = '#49d049';
+	color5.innerHTML = '#71da71';
+	color6.innerHTML = '#9ae59a';
+	color7.innerHTML = '#c2efc2';
+	color8.innerHTML = '#ebfaeb';
+
+	makeUnnecessaryDivInvisible();
+});
+
+document.getElementById('color-black').addEventListener('click', () =>{
+	color1.innerHTML = 'black';
+	color3.innerHTML = 'rgb(128,128,128)';
+	color4.innerHTML = 'rgb(169,169,169)';
+	color5.innerHTML = 'rgb(192,192,192)';
+	color6.innerHTML = 'rgb(211,211,211)';
+	color7.innerHTML = 'rgb(220,220,220)';
+	color8.innerHTML = 'rgb(245,245,245)';
+
+	makeUnnecessaryDivInvisible();
+});
+
+document.getElementById('color-three').addEventListener('click', () =>{
+	color1.innerHTML = '#4d2600';
+	color3.innerHTML = '#e67300';
+	color4.innerHTML = '#ff8c1a';
+	color5.innerHTML = '#ffa64d';
+	color6.innerHTML = '#ffbf80';
+	color7.innerHTML = '#ffd9b3';
+	color8.innerHTML = '#fff2e6';
+
+	makeUnnecessaryDivInvisible();
+});
+
+
+document.getElementById('color-four').addEventListener('click', () =>{
+	color1.innerHTML = '#004d4d';
+	color3.innerHTML = '#00e6e6';
+	color4.innerHTML = '#4dffff';
+	color5.innerHTML = '#4dffff';
+	color6.innerHTML = '#80ffff';
+	color7.innerHTML = '#b3ffff';
+	color8.innerHTML = '#e6ffff';
+
+	makeUnnecessaryDivInvisible();
+});

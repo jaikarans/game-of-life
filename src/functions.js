@@ -1,5 +1,14 @@
 import { rows, cols, ctx} from "./common.js";
 
+const color0 = document.getElementById('color-0');
+const color1 = document.getElementById('color-1');
+const color3 = document.getElementById('color-3');
+const color4 = document.getElementById('color-4');
+const color5 = document.getElementById('color-5');
+const color6 = document.getElementById('color-6');
+const color7 = document.getElementById('color-7');
+const color8 = document.getElementById('color-8');
+
 // count live box around box
 export function countNeighbors(grid, x, y) {
     let sum = 0;
@@ -44,51 +53,40 @@ export function make2d(rows, cols, zero = false){
 // grid containg vale greater then 1 is for colors
 export function color (grid, i, j){
   if(grid[i][j] == 1){
-    ctx.fillStyle = 'black'
+    ctx.fillStyle = color1.innerHTML;
   }
   else if (grid[i][j] == 3) {
-    ctx.fillStyle = `rgb(
-      128,
-      128,
-      128
-      )`	
+    ctx.fillStyle = color3.innerHTML;
   }
   else if (grid[i][j] == 4) {
-    ctx.fillStyle = `rgb(
-      169,
-      169,
-      169
-      )`
+    ctx.fillStyle = color4.innerHTML;
   }
   else if(grid[i][j] == 5){
-    ctx.fillStyle = `rgb(
-      192,
-      192,
-      192
-    )`
+    ctx.fillStyle = color5.innerHTML;
   }
   else if (grid[i][j] == 6) {
-    ctx.fillStyle = `rgb(
-      211,
-      211,
-      211
-      )`	
+    ctx.fillStyle = color6.innerHTML;
   }
   else if (grid[i][j] == 7) {
-    ctx.fillStyle = `rgb(
-      220,
-      220,
-      220
-      )`	
+    ctx.fillStyle = color7.innerHTML;
   }
   else if (grid[i][j] == 8) {
-    ctx.fillStyle = `rgb(
-      245,
-      245,
-      245
-      )`	
+    ctx.fillStyle = color8.innerHTML;
   }
   else{ 
     ctx.fillStyle = 'white'
   }
+}
+
+
+export function makeUnnecessaryDivInvisible() {
+  color0.style = 'display: none';
+  color1.style = 'display: none';
+  color3.style = 'display: none';
+  color4.style = 'display: none';
+  color5.style = 'display: none';
+  color6.style = 'display: none';
+  color7.style = 'display: none';
+  color8.style = 'display: none';
+  
 }

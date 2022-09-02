@@ -3,9 +3,10 @@ export const start = document.getElementById('start');
 export const ctx = canvas.getContext('2d')
 export const pause = document.getElementById('pause')
 
-export let w = 800;
-export let h = 800;
-export let reso = 40;
+export let w = 6000;
+export let h = 6000;
+export let reso = 30;
+
 
 canvas.height = h;
 canvas.width = w;

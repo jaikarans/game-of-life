@@ -5,15 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="./index.css">
     <title>Game of Life</title>
 </head>
-<bodyl>
+<body>
+    <div class="color">
+        <p id="color-0">white</p>
+        <p id="color-1">black</p>
+        <p id="color-3">rgb(128,128,128)</p>
+        <p id="color-4">rgb(169,169,169)</p>
+        <p id="color-5">rgb(192,192,192)</p>
+        <p id="color-6">rgb(211,211,211)</p>
+        <p id="color-7">rgb(220,220,220)</p>
+        <p id="color-8">rgb(245,245,245)</p>
+    </div>
 
-   <canvas id="canvas" ></canvas>
-   <button id="start" >Start</button>
-   <button id="pause" >Pause</button>
-   <button id="clear" >Clear</button>
-   <script type="module" src="index.js"></script>
+    <div id="sticky-div">
+        <h2 id="title">Game of Life</h2>
+        <button id="start" >Start</button>
+        <button id="pause" >Pause</button>
+        <button id="clear" >Clear</button>
+        <h2 style="width: 100%; text-align:center; margin-top:20px; font-size: 40px; text-shadow: 5px 10px 20px black;">Box-Color</h2>
+        <button class="color-button" id="color-black" style="background-color:  black;">Black</button>
+        <button class="color-button" id="color-green" style="background-color:  #2aa22a;">green</button>
+        <button class="color-button" id="color-three" style="background-color:  #4d2600;"></button>
+        <button class="color-button" id="color-four" style="background-color:  #004d4d;"></button>
+        <br>
+        <br>
+        <br>
+        <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" style="font-size: 30px; margin: 30px;">About the Game</a>
+        <a href="https://github.com/jaikarans/game-of-life" style="font-size: 30px; margin: 30px;">Github</a>
+        
+        
+    </div>
+    <canvas id="canvas" ></canvas>
+    <script type="module" src="index.js"></script>
+
+   
    
 </body>
 </html>
